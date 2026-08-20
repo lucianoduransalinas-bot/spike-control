@@ -14,10 +14,6 @@
 
 <style>
 
-/* =========================================================
-   GENERAL
-   ========================================================= */
-
 * {
     box-sizing: border-box;
     user-select: none;
@@ -29,123 +25,104 @@ html,
 body {
     margin: 0;
     padding: 0;
-
     width: 100%;
     height: 100%;
-
     overflow: hidden;
-
     background: #080c14;
     color: white;
-
     font-family: Arial, sans-serif;
 }
 
-body {
+#app {
+    position: fixed;
+    inset: 0;
     width: 100vw;
     height: 100vh;
-}
-
-
-/* =========================================================
-   APP
-   ========================================================= */
-
-#app {
-    width: 100%;
-    height: 100%;
-
-    position: relative;
-
     overflow: hidden;
 }
 
 
-/* =========================================================
+/* =====================================================
    CABECERA
-   ========================================================= */
+   ===================================================== */
 
 #top {
     position: absolute;
-
-    top: 8px;
-    left: 8px;
-    right: 8px;
-
-    height: 42px;
+    top: 1.5vh;
+    left: 1.5vw;
+    right: 1.5vw;
+    height: 7vh;
+    min-height: 35px;
 
     display: flex;
     align-items: center;
     justify-content: space-between;
 
-    padding: 0 12px;
+    padding: 0 2vw;
 
     background: #111827;
-
     border: 1px solid #263247;
-
     border-radius: 12px;
 
-    z-index: 10;
+    z-index: 50;
 }
 
 #titulo {
-    font-size: clamp(15px, 4vw, 21px);
+    font-size: clamp(14px, 3vw, 22px);
     font-weight: bold;
 }
 
 #estado {
-    font-size: clamp(11px, 3vw, 14px);
-    color: #f87171;
+    font-size: clamp(10px, 2vw, 14px);
     font-weight: bold;
+    color: #f87171;
 }
 
 
-/* =========================================================
-   ZONA DE CONTROL
-   ========================================================= */
+/* =====================================================
+   ZONA PRINCIPAL
+   ===================================================== */
 
 #control {
     position: absolute;
-
-    left: 0;
-    right: 0;
-
-    top: 55px;
-    bottom: 8px;
+    inset: 0;
+    width: 100%;
+    height: 100%;
 }
 
 
-/* =========================================================
+/* =====================================================
    JOYSTICKS
-   ========================================================= */
+   ===================================================== */
 
 .joystickArea {
     position: absolute;
 
-    width: min(34vw, 190px);
-    height: min(42vh, 220px);
+    width: 25vw;
+    height: 48vh;
 
     display: flex;
-
     flex-direction: column;
-
     align-items: center;
-
     justify-content: center;
 }
 
 .joystickTitulo {
-    font-size: clamp(10px, 2.5vw, 14px);
+    margin-bottom: 1vh;
 
+    font-size: clamp(9px, 2vw, 14px);
     color: #94a3b8;
-
-    margin-bottom: 5px;
 }
 
 .joystick {
-    width: min(30vw, 170px);
-    height: min(30vw, 170px);
+    width: min(24vw, 190px);
+    height: min(24vw, 190px);
+
+    min-width: 120px;
+    min-height: 120px;
+
+    max-width: 190px;
+    max-height: 190px;
 
     position: relative;
 
@@ -163,7 +140,7 @@ body {
 
     box-shadow:
         inset 0 0 25px rgba(0,0,0,.5),
-        0 6px 18px rgba(0,0,0,.35);
+        0 5px 18px rgba(0,0,0,.4);
 
     touch-action: none;
 }
@@ -203,8 +180,14 @@ body {
 .palanca {
     position: absolute;
 
-    width: min(11vw, 65px);
-    height: min(11vw, 65px);
+    width: min(9vw, 65px);
+    height: min(9vw, 65px);
+
+    min-width: 48px;
+    min-height: 48px;
+
+    max-width: 65px;
+    max-height: 65px;
 
     left: 50%;
     top: 50%;
@@ -218,7 +201,7 @@ body {
             circle at 35% 30%,
             #64748b,
             #334155 55%,
-            #1e293b
+            #1e293b 100%
         );
 
     border: 3px solid #64748b;
@@ -231,64 +214,64 @@ body {
 }
 
 
-/* =========================================================
+/* =====================================================
    POSICIÓN JOYSTICK IZQUIERDO
-   ========================================================= */
+   ===================================================== */
 
 #joystickIzquierdo {
-    left: 3vw;
-    bottom: 8vh;
+    left: 2vw;
+    top: 50%;
+    transform: translateY(-45%);
 }
 
 
-/* =========================================================
+/* =====================================================
    POSICIÓN JOYSTICK DERECHO
-   ========================================================= */
+   ===================================================== */
 
 #joystickDerecho {
-    right: 12vw;
-    bottom: 8vh;
+    right: 13vw;
+    top: 50%;
+    transform: translateY(-45%);
 }
 
 
-/* =========================================================
+/* =====================================================
    CENTRO
-   ========================================================= */
+   ===================================================== */
 
 #centro {
     position: absolute;
 
     left: 50%;
-    top: 50%;
+    top: 53%;
 
     transform: translate(-50%, -50%);
 
     display: flex;
-
     flex-direction: column;
-
     align-items: center;
 
-    gap: 8px;
+    gap: 1vh;
+
+    z-index: 20;
 }
 
 #robot {
-    font-size: clamp(25px, 6vw, 42px);
+    font-size: clamp(20px, 5vw, 40px);
 }
 
 #freno,
 #centrar {
-    width: clamp(80px, 20vw, 115px);
-    height: clamp(40px, 9vw, 52px);
+    width: clamp(75px, 15vw, 115px);
+    height: clamp(38px, 8vh, 52px);
 
     border: none;
-
     border-radius: 12px;
 
     color: white;
 
-    font-size: clamp(10px, 2.7vw, 14px);
-
+    font-size: clamp(9px, 2vw, 14px);
     font-weight: bold;
 }
 
@@ -306,55 +289,53 @@ body {
 }
 
 
-/* =========================================================
-   BARRAS EXTREMO DERECHO
-   ========================================================= */
+/* =====================================================
+   BARRAS EN EL EXTREMO DERECHO
+   ===================================================== */
 
 #barrasDerecha {
     position: fixed;
 
-    right: 8px;
-
+    right: 1vw;
     top: 50%;
 
     transform: translateY(-50%);
 
     display: flex;
-
     flex-direction: column;
 
     align-items: center;
+    justify-content: center;
 
-    gap: 12px;
+    gap: 2vh;
 
-    z-index: 20;
+    z-index: 100;
 }
 
 .medidorContenedor {
     display: flex;
-
     flex-direction: column;
-
     align-items: center;
 
-    gap: 4px;
+    gap: .5vh;
 }
 
 .medidorTitulo {
-    font-size: clamp(8px, 2vw, 11px);
+    font-size: clamp(7px, 1.6vw, 11px);
 
     color: #94a3b8;
 
     writing-mode: vertical-rl;
 
     transform: rotate(180deg);
-
-    height: 45px;
 }
 
 .medidor {
-    width: clamp(18px, 5vw, 27px);
-    height: min(35vh, 150px);
+    width: clamp(17px, 3vw, 27px);
+
+    height: min(30vh, 145px);
+
+    min-height: 80px;
 
     position: relative;
 
@@ -401,26 +382,24 @@ body {
 }
 
 .medidorValor {
-    font-size: clamp(8px, 2vw, 11px);
-
+    font-size: clamp(7px, 1.7vw, 11px);
     color: #94a3b8;
 }
 
 
-/* =========================================================
+/* =====================================================
    CONFIGURACIÓN
-   ========================================================= */
+   ===================================================== */
 
 #config {
-    position: absolute;
+    position: fixed;
 
     left: 50%;
-
-    bottom: 5px;
+    bottom: 1vh;
 
     transform: translateX(-50%);
 
-    width: min(45vw, 330px);
+    width: min(38vw, 330px);
 
     padding: 5px 8px;
 
@@ -430,7 +409,7 @@ body {
 
     border-radius: 10px;
 
-    z-index: 10;
+    z-index: 40;
 }
 
 .configLinea {
@@ -440,118 +419,161 @@ body {
 
     gap: 5px;
 
-    margin: 3px 0;
+    margin: 2px 0;
 }
 
 .configLinea span {
-    width: 60px;
+    width: 55px;
 
+    font-size: 8px;
     color: #cbd5e1;
-
-    font-size: 9px;
 }
 
 input[type="range"] {
     flex: 1;
-
+    min-width: 0;
     height: 15px;
 }
 
 .configLinea b {
-    font-size: 9px;
-
-    min-width: 30px;
+    font-size: 8px;
+    min-width: 25px;
 }
 
 
-/* =========================================================
+/* =====================================================
    BOTÓN CONECTAR
-   ========================================================= */
+   ===================================================== */
 
 #conectar {
-    position: absolute;
+    position: fixed;
 
-    right: 8px;
-    bottom: 8px;
+    right: 5vw;
+    bottom: 1vh;
 
-    width: min(25vw, 170px);
+    width: min(18vw, 160px);
 
-    height: 38px;
+    height: clamp(32px, 6vh, 42px);
 
     border: none;
-
     border-radius: 10px;
 
     background: #22c55e;
 
     color: #052e16;
 
-    font-size: clamp(9px, 2.5vw, 13px);
+    font-size: clamp(8px, 1.8vw, 13px);
 
     font-weight: bold;
 
-    z-index: 30;
+    z-index: 60;
 }
 
 
-/* =========================================================
-   MÓVILES PEQUEÑOS
-   ========================================================= */
+/* =====================================================
+   CELULAR
+   ===================================================== */
 
-@media (max-height: 500px) {
+@media (max-width: 600px) {
 
-    #top {
-        height: 35px;
-        top: 5px;
+    .joystick {
+        width: 27vw;
+        height: 27vw;
+
+        min-width: 110px;
+        min-height: 110px;
     }
 
-    #control {
-        top: 45px;
+    .palanca {
+        width: 16vw;
+        height: 16vw;
+
+        min-width: 45px;
+        min-height: 45px;
     }
 
-    #joystickIzquierdo,
+    #joystickIzquierdo {
+        left: 1vw;
+    }
+
     #joystickDerecho {
-        bottom: 2vh;
+        right: 13vw;
+    }
+
+    #barrasDerecha {
+        right: .8vw;
     }
 
     #config {
-        bottom: 2px;
+        width: 42vw;
+    }
+
+    #conectar {
+        right: 4vw;
+        width: 20vw;
+    }
+}
+
+
+/* =====================================================
+   PANTALLA BAJA
+   ===================================================== */
+
+@media (max-height: 450px) {
+
+    #top {
+        height: 32px;
+    }
+
+    .joystick {
+        width: min(25vw, 150px);
+        height: min(25vw, 150px);
+
+        min-width: 100px;
+        min-height: 100px;
+    }
+
+    .palanca {
+        width: 50px;
+        height: 50px;
+    }
+
+    .medidor {
+        height: 100px;
+    }
+
+    #centro {
+        gap: 3px;
+    }
+
+    #config {
+        display: none;
     }
 
     #conectar {
         bottom: 3px;
-        height: 32px;
-    }
-
-    .medidor {
-        height: 115px;
-    }
-
-    #centro {
-        gap: 5px;
     }
 }
 
 
-/* =========================================================
+/* =====================================================
    VERTICAL
-   ========================================================= */
+   ===================================================== */
 
 @media (orientation: portrait) {
 
     #app::after {
         content: "↻  GIRA EL TELÉFONO";
-        
+
         position: fixed;
 
         inset: 0;
 
-        z-index: 9999;
+        z-index: 99999;
 
         display: flex;
 
         align-items: center;
-
         justify-content: center;
 
         background: #080c14;
@@ -565,6 +587,7 @@ input[type="range"] {
 }
 
 </style>
+
 
 </head>
 
@@ -801,6 +824,7 @@ input[type="range"] {
 
     </div>
 
+
 </div>
 
 
@@ -905,7 +929,7 @@ angulo.addEventListener(
 
 
 /* =========================================================
-   JOYSTICK
+   CREAR JOYSTICK
    ========================================================= */
 
 function crearJoystick(elemento) {
@@ -927,10 +951,8 @@ function crearJoystick(elemento) {
             return;
         }
 
-
         const rect =
             elemento.getBoundingClientRect();
-
 
         const centroX =
             rect.width / 2;
@@ -938,29 +960,24 @@ function crearJoystick(elemento) {
         const centroY =
             rect.height / 2;
 
-
         let nuevaX =
             evento.clientX -
             rect.left -
             centroX;
-
 
         let nuevaY =
             evento.clientY -
             rect.top -
             centroY;
 
-
         const max =
             rect.width / 2 - 35;
-
 
         const distancia =
             Math.sqrt(
                 nuevaX * nuevaX +
                 nuevaY * nuevaY
             );
-
 
         if (distancia > max) {
 
@@ -969,9 +986,7 @@ function crearJoystick(elemento) {
 
             nuevaY =
                 nuevaY / distancia * max;
-
         }
-
 
         x =
             nuevaX / max;
@@ -979,16 +994,13 @@ function crearJoystick(elemento) {
         y =
             nuevaY / max;
 
-
         palanca.style.left =
             `calc(50% + ${nuevaX}px)`;
 
         palanca.style.top =
             `calc(50% + ${nuevaY}px)`;
 
-
         actualizarControl();
-
     }
 
 
@@ -999,16 +1011,13 @@ function crearJoystick(elemento) {
         x = 0;
         y = 0;
 
-
         palanca.style.left =
             "50%";
 
         palanca.style.top =
             "50%";
 
-
         actualizarControl();
-
     }
 
 
@@ -1023,7 +1032,6 @@ function crearJoystick(elemento) {
             );
 
             mover(evento);
-
         }
     );
 
@@ -1053,12 +1061,11 @@ function crearJoystick(elemento) {
         obtenerY: () => y
 
     };
-
 }
 
 
 /* =========================================================
-   CREAR JOYSTICKS
+   JOYSTICKS
    ========================================================= */
 
 const movimiento =
@@ -1083,7 +1090,6 @@ function actualizarBarraMovimiento(valor) {
             100,
             Math.abs(valor) * 100
         );
-
 
     valorMovimiento.textContent =
         Math.round(porcentaje) + "%";
@@ -1116,9 +1122,7 @@ function actualizarBarraMovimiento(valor) {
 
         rellenoMovimiento.style.height =
             "0%";
-
     }
-
 }
 
 
@@ -1133,7 +1137,6 @@ function actualizarBarraDireccion(valor) {
             100,
             Math.abs(valor) * 100
         );
-
 
     valorDireccion.textContent =
         Math.round(porcentaje) + "%";
@@ -1166,9 +1169,7 @@ function actualizarBarraDireccion(valor) {
 
         rellenoDireccion.style.height =
             "0%";
-
     }
-
 }
 
 
@@ -1191,7 +1192,6 @@ function actualizarControl() {
     actualizarBarraMovimiento(
         yMovimiento
     );
-
 
     actualizarBarraDireccion(
         xDireccion
@@ -1216,7 +1216,6 @@ function actualizarControl() {
             angulo.value
 
     });
-
 }
 
 
@@ -1233,7 +1232,6 @@ freno.addEventListener(
         actualizarBarraDireccion(0);
 
         console.log("FRENO");
-
     }
 );
 
@@ -1249,7 +1247,6 @@ centrar.addEventListener(
         actualizarBarraDireccion(0);
 
         console.log("CENTRAR");
-
     }
 );
 
