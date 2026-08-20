@@ -1,12 +1,22 @@
 <!DOCTYPE html>
 <html lang="es">
+
 <head>
+
 <meta charset="UTF-8">
-<meta name="viewport" content="width=device-width, initial-scale=1.0, user-scalable=no">
+
+<meta
+    name="viewport"
+    content="width=device-width, initial-scale=1.0, user-scalable=no"
+>
 
 <title>SPIKE CONTROL</title>
 
 <style>
+
+/* =========================================================
+   GENERAL
+   ========================================================= */
 
 * {
     box-sizing: border-box;
@@ -15,106 +25,131 @@
     -webkit-tap-highlight-color: transparent;
 }
 
-html, body {
+html,
+body {
+
     margin: 0;
+    padding: 0;
+
     width: 100%;
     height: 100%;
+
     overflow: hidden;
+
     background: #080c14;
     color: white;
+
     font-family: Arial, sans-serif;
 }
 
 body {
+
     display: flex;
+
     justify-content: center;
     align-items: center;
 }
 
 #app {
+
     width: 100%;
     height: 100%;
-    max-width: 1100px;
+
     padding: 12px;
 
     display: flex;
+
     flex-direction: column;
 }
 
-/* =========================
+
+/* =========================================================
    CABECERA
-   ========================= */
+   ========================================================= */
 
 #top {
+
     height: 55px;
 
     display: flex;
+
     align-items: center;
+
     justify-content: space-between;
 
     padding: 0 15px;
 
     background: #111827;
+
     border: 1px solid #263247;
+
     border-radius: 16px;
 }
 
 #titulo {
+
     font-size: 22px;
+
     font-weight: bold;
 }
 
 #estado {
+
     font-size: 14px;
+
     color: #f87171;
+
     font-weight: bold;
 }
 
 
-/* =========================
-   CONTROLES
-   ========================= */
+/* =========================================================
+   ZONA PRINCIPAL
+   ========================================================= */
 
 #control {
+
     flex: 1;
 
     display: flex;
-    justify-content: space-between;
+
     align-items: center;
 
-    gap: 10px;
-    padding: 10px;
-}
-
-.joystickGrupo {
-    display: flex;
-    align-items: center;
     justify-content: center;
-    gap: 15px;
+
+    position: relative;
 }
+
+
+/* =========================================================
+   JOYSTICKS
+   ========================================================= */
 
 .joystickArea {
-    width: 250px;
+
+    width: 260px;
     height: 290px;
 
     display: flex;
+
     flex-direction: column;
+
     align-items: center;
+
     justify-content: center;
 }
 
 .joystickTitulo {
+
     font-size: 15px;
+
     color: #94a3b8;
+
     margin-bottom: 10px;
 }
 
-
-/* =========================
-   JOYSTICK
-   ========================= */
-
 .joystick {
+
     width: 220px;
     height: 220px;
 
@@ -123,6 +158,7 @@ body {
     border-radius: 50%;
 
     background:
+
         radial-gradient(
             circle,
             #263653 0%,
@@ -133,13 +169,16 @@ body {
     border: 3px solid #334155;
 
     box-shadow:
+
         inset 0 0 30px rgba(0,0,0,.5),
+
         0 8px 25px rgba(0,0,0,.35);
 
     touch-action: none;
 }
 
 .joystick::before {
+
     content: "";
 
     position: absolute;
@@ -156,6 +195,7 @@ body {
 }
 
 .joystick::after {
+
     content: "";
 
     position: absolute;
@@ -172,6 +212,7 @@ body {
 }
 
 .palanca {
+
     position: absolute;
 
     width: 80px;
@@ -185,6 +226,7 @@ body {
     border-radius: 50%;
 
     background:
+
         radial-gradient(
             circle at 35% 30%,
             #64748b,
@@ -195,28 +237,157 @@ body {
     border: 3px solid #64748b;
 
     box-shadow:
+
         0 8px 20px rgba(0,0,0,.6),
+
         inset 0 3px 8px rgba(255,255,255,.15);
 
     pointer-events: none;
 }
 
 
-/* =========================
-   BARRA VERTICAL
-   ========================= */
+/* =========================================================
+   POSICIÓN DOS JOYSTICKS
+   ========================================================= */
+
+#joystickIzquierdo {
+
+    position: absolute;
+
+    left: 60px;
+
+    top: 50%;
+
+    transform: translateY(-50%);
+}
+
+#joystickDerecho {
+
+    position: absolute;
+
+    right: 170px;
+
+    top: 50%;
+
+    transform: translateY(-50%);
+}
+
+
+/* =========================================================
+   CENTRO
+   ========================================================= */
+
+#centro {
+
+    position: absolute;
+
+    left: 50%;
+
+    top: 50%;
+
+    transform: translate(-50%, -50%);
+
+    display: flex;
+
+    flex-direction: column;
+
+    align-items: center;
+
+    gap: 12px;
+}
+
+#robot {
+
+    font-size: 42px;
+}
+
+#freno,
+#centrar {
+
+    width: 120px;
+    height: 55px;
+
+    border: none;
+
+    border-radius: 14px;
+
+    color: white;
+
+    font-size: 15px;
+
+    font-weight: bold;
+}
+
+#freno {
+
+    background: #dc2626;
+}
+
+#centrar {
+
+    background: #475569;
+}
+
+#freno:active,
+#centrar:active {
+
+    transform: scale(.94);
+}
+
+
+/* =========================================================
+   BARRAS A LA DERECHA DE LA PÁGINA
+   ========================================================= */
+
+#barrasDerecha {
+
+    position: fixed;
+
+    right: 20px;
+
+    top: 50%;
+
+    transform: translateY(-50%);
+
+    display: flex;
+
+    flex-direction: column;
+
+    gap: 30px;
+
+    align-items: center;
+}
+
+
+/* =========================================================
+   BARRA
+   ========================================================= */
 
 .medidorContenedor {
+
     display: flex;
+
     flex-direction: column;
+
     align-items: center;
 
     gap: 8px;
 }
 
+.medidorTitulo {
+
+    font-size: 12px;
+
+    color: #94a3b8;
+
+    text-align: center;
+}
+
 .medidor {
+
     width: 30px;
-    height: 220px;
+
+    height: 200px;
 
     position: relative;
 
@@ -224,15 +395,17 @@ body {
 
     background: #111827;
 
-    border: 2px solid #334155;
+    border: 2px solid #64748b;
 
-    border-radius: 16px;
+    border-radius: 18px;
 
     box-shadow:
+
         inset 0 0 12px rgba(0,0,0,.5);
 }
 
 .medidorCentro {
+
     position: absolute;
 
     left: 0;
@@ -242,12 +415,13 @@ body {
 
     height: 2px;
 
-    background: #64748b;
+    background: white;
 
     z-index: 3;
 }
 
 .medidorRelleno {
+
     position: absolute;
 
     left: 0;
@@ -262,76 +436,49 @@ body {
     z-index: 2;
 
     transition:
+
         top .04s linear,
+
         height .04s linear;
 }
 
 .medidorValor {
+
     font-size: 12px;
+
     color: #94a3b8;
 }
 
 
-/* =========================
-   CENTRO
-   ========================= */
-
-#centro {
-    display: flex;
-    flex-direction: column;
-    align-items: center;
-    justify-content: center;
-
-    gap: 12px;
-}
-
-#robot {
-    font-size: 42px;
-}
-
-#freno,
-#centrar {
-    width: 120px;
-    height: 55px;
-
-    border: none;
-    border-radius: 14px;
-
-    color: white;
-
-    font-size: 15px;
-    font-weight: bold;
-}
-
-#freno {
-    background: #dc2626;
-}
-
-#centrar {
-    background: #475569;
-}
-
-#freno:active,
-#centrar:active {
-    transform: scale(.94);
-}
-
-
-/* =========================
+/* =========================================================
    CONFIGURACIÓN
-   ========================= */
+   ========================================================= */
 
 #config {
+
+    position: absolute;
+
+    bottom: 75px;
+
+    left: 50%;
+
+    transform: translateX(-50%);
+
+    width: 420px;
+
+    padding: 10px 15px;
+
     background: #111827;
 
     border: 1px solid #263247;
-    border-radius: 16px;
 
-    padding: 10px 15px;
+    border-radius: 16px;
 }
 
 .configLinea {
+
     display: flex;
+
     align-items: center;
 
     gap: 10px;
@@ -340,6 +487,7 @@ body {
 }
 
 .configLinea span {
+
     width: 80px;
 
     color: #cbd5e1;
@@ -348,21 +496,31 @@ body {
 }
 
 input[type="range"] {
+
     flex: 1;
 }
 
 
-/* =========================
+/* =========================================================
    CONECTAR
-   ========================= */
+   ========================================================= */
 
 #conectar {
-    width: 100%;
+
+    position: absolute;
+
+    bottom: 12px;
+
+    left: 50%;
+
+    transform: translateX(-50%);
+
+    width: 420px;
+
     height: 52px;
 
-    margin-top: 8px;
-
     border: none;
+
     border-radius: 14px;
 
     background: #22c55e;
@@ -370,64 +528,68 @@ input[type="range"] {
     color: #052e16;
 
     font-size: 17px;
+
     font-weight: bold;
 }
 
 
-/* =========================
-   TELÉFONO
-   ========================= */
+/* =========================================================
+   MÓVIL
+   ========================================================= */
 
-@media (max-width: 700px) {
+@media (max-width: 800px) {
 
-    #control {
-        gap: 2px;
+    #joystickIzquierdo {
+
+        left: 25px;
     }
 
-    .joystickGrupo {
-        gap: 7px;
+    #joystickDerecho {
+
+        right: 100px;
     }
 
-    .joystickArea {
-        width: 38vw;
-        height: 230px;
+    #barrasDerecha {
+
+        right: 10px;
+    }
+
+    #config,
+    #conectar {
+
+        width: 300px;
     }
 
     .joystick {
-        width: 38vw;
-        height: 38vw;
 
-        max-width: 190px;
-        max-height: 190px;
+        width: 180px;
+        height: 180px;
     }
 
     .palanca {
+
         width: 65px;
         height: 65px;
     }
 
-    .medidor {
-        width: 24px;
-        height: 180px;
-    }
+    .joystickArea {
 
-    #robot {
-        display: none;
-    }
-
-    #freno,
-    #centrar {
-        width: 85px;
-        height: 48px;
-
-        font-size: 12px;
+        width: 210px;
+        height: 240px;
     }
 }
+
+
+/* =========================================================
+   VERTICAL
+   ========================================================= */
 
 @media (orientation: portrait) {
 
     body::before {
-        content: "Gira el teléfono para usar SPIKE CONTROL";
+
+        content:
+            "↻ GIRA EL TELÉFONO";
 
         position: fixed;
 
@@ -437,60 +599,63 @@ input[type="range"] {
 
         display: flex;
 
-        align-items: center;
         justify-content: center;
 
-        text-align: center;
-
-        padding: 30px;
+        align-items: center;
 
         background: #080c14;
 
-        font-size: 22px;
+        color: white;
+
+        font-size: 25px;
+
         font-weight: bold;
     }
 }
 
 </style>
+
 </head>
 
 
 <body>
 
+
 <div id="app">
 
 
-<!-- =========================
-     CABECERA
-     ========================= -->
+    <!-- =====================================================
+         CABECERA
+         ===================================================== -->
 
-<div id="top">
+    <div id="top">
 
-    <div id="titulo">
-        🎮 SPIKE CONTROL
+        <div id="titulo">
+            🎮 SPIKE CONTROL
+        </div>
+
+        <div id="estado">
+            🔴 DESCONECTADO
+        </div>
+
     </div>
 
-    <div id="estado">
-        🔴 DESCONECTADO
-    </div>
 
-</div>
+    <!-- =====================================================
+         ZONA DE CONTROL
+         ===================================================== -->
 
-
-<!-- =========================
-     CONTROLES
-     ========================= -->
-
-<div id="control">
+    <div id="control">
 
 
-    <!-- =====================
-         JOYSTICK IZQUIERDO
-         ===================== -->
+        <!-- =================================================
+             JOYSTICK IZQUIERDO
+             ================================================= -->
 
-    <div class="joystickGrupo">
-
-        <div class="joystickArea">
+        <div
+            id="joystickIzquierdo"
+            class="joystickArea"
+        >
 
             <div class="joystickTitulo">
                 MOVIMIENTO
@@ -508,97 +673,35 @@ input[type="range"] {
         </div>
 
 
-        <!-- BARRA AL LADO -->
+        <!-- =================================================
+             CENTRO
+             ================================================= -->
 
-        <div class="medidorContenedor">
+        <div id="centro">
 
-            <div
-                id="medidorMovimiento"
-                class="medidor"
-            >
-
-                <div
-                    class="medidorCentro"
-                ></div>
-
-                <div
-                    id="rellenoMovimiento"
-                    class="medidorRelleno"
-                ></div>
-
+            <div id="robot">
+                🤖
             </div>
 
-            <div
-                id="valorMovimiento"
-                class="medidorValor"
-            >
-                0%
-            </div>
+            <button id="freno">
+                ⏹ FRENO
+            </button>
 
-        </div>
-
-    </div>
-
-
-    <!-- =====================
-         CENTRO
-         ===================== -->
-
-    <div id="centro">
-
-        <div id="robot">
-            🤖
-        </div>
-
-        <button id="freno">
-            ⏹ FRENO
-        </button>
-
-        <button id="centrar">
-            🎯 CENTRAR
-        </button>
-
-    </div>
-
-
-    <!-- =====================
-         JOYSTICK DERECHO
-         ===================== -->
-
-    <div class="joystickGrupo">
-
-
-        <!-- BARRA AL LADO -->
-
-        <div class="medidorContenedor">
-
-            <div
-                id="medidorDireccion"
-                class="medidor"
-            >
-
-                <div
-                    class="medidorCentro"
-                ></div>
-
-                <div
-                    id="rellenoDireccion"
-                    class="medidorRelleno"
-                ></div>
-
-            </div>
-
-            <div
-                id="valorDireccion"
-                class="medidorValor"
-            >
-                0%
-            </div>
+            <button id="centrar">
+                🎯 CENTRAR
+            </button>
 
         </div>
 
 
-        <div class="joystickArea">
+        <!-- =================================================
+             JOYSTICK DERECHO
+             ================================================= -->
+
+        <div
+            id="joystickDerecho"
+            class="joystickArea"
+        >
 
             <div class="joystickTitulo">
                 DIRECCIÓN
@@ -615,70 +718,139 @@ input[type="range"] {
 
         </div>
 
+
+        <!-- =================================================
+             CONFIGURACIÓN
+             ================================================= -->
+
+        <div id="config">
+
+            <div class="configLinea">
+
+                <span>
+                    VELOCIDAD
+                </span>
+
+                <input
+                    id="velocidad"
+                    type="range"
+                    min="100"
+                    max="1000"
+                    value="700"
+                    step="50"
+                >
+
+                <b id="velocidadValor">
+                    700
+                </b>
+
+            </div>
+
+
+            <div class="configLinea">
+
+                <span>
+                    ÁNGULO
+                </span>
+
+                <input
+                    id="angulo"
+                    type="range"
+                    min="10"
+                    max="180"
+                    value="90"
+                    step="5"
+                >
+
+                <b id="anguloValor">
+                    90°
+                </b>
+
+            </div>
+
+        </div>
+
+
+        <!-- =================================================
+             CONECTAR
+             ================================================= -->
+
+        <button id="conectar">
+            🔵 CONECTAR HUB
+        </button>
+
     </div>
 
-</div>
+
+    <!-- =====================================================
+         BARRAS DERECHA
+         ===================================================== -->
+
+    <div id="barrasDerecha">
 
 
-<!-- =========================
-     CONFIGURACIÓN
-     ========================= -->
+        <!-- BARRA MOVIMIENTO -->
 
-<div id="config">
+        <div class="medidorContenedor">
 
-    <div class="configLinea">
+            <div class="medidorTitulo">
+                MOVIMIENTO
+            </div>
 
-        <span>
-            VELOCIDAD
-        </span>
+            <div class="medidor">
 
-        <input
-            id="velocidad"
-            type="range"
-            min="100"
-            max="1000"
-            value="700"
-            step="50"
-        >
+                <div
+                    id="rellenoMovimiento"
+                    class="medidorRelleno"
+                ></div>
 
-        <b id="velocidadValor">
-            700
-        </b>
+                <div
+                    class="medidorCentro"
+                ></div>
+
+            </div>
+
+            <div
+                id="valorMovimiento"
+                class="medidorValor"
+            >
+                0%
+            </div>
+
+        </div>
+
+
+        <!-- BARRA DIRECCIÓN -->
+
+        <div class="medidorContenedor">
+
+            <div class="medidorTitulo">
+                DIRECCIÓN
+            </div>
+
+            <div class="medidor">
+
+                <div
+                    id="rellenoDireccion"
+                    class="medidorRelleno"
+                ></div>
+
+                <div
+                    class="medidorCentro"
+                ></div>
+
+            </div>
+
+            <div
+                id="valorDireccion"
+                class="medidorValor"
+            >
+                0%
+            </div>
+
+        </div>
 
     </div>
-
-
-    <div class="configLinea">
-
-        <span>
-            ÁNGULO
-        </span>
-
-        <input
-            id="angulo"
-            type="range"
-            min="10"
-            max="180"
-            value="90"
-            step="5"
-        >
-
-        <b id="anguloValor">
-            90°
-        </b>
-
-    </div>
-
-</div>
-
-
-<!-- =========================
-     BLUETOOTH
-     ========================= -->
-
-<button id="conectar">
-    🔵 CONECTAR HUB
-</button>
 
 
 </div>
@@ -752,7 +924,7 @@ const centrar =
 
 
 /* =========================================================
-   VELOCIDAD
+   SLIDER VELOCIDAD
    ========================================================= */
 
 velocidad.addEventListener(
@@ -767,7 +939,7 @@ velocidad.addEventListener(
 
 
 /* =========================================================
-   ÁNGULO
+   SLIDER ÁNGULO
    ========================================================= */
 
 angulo.addEventListener(
@@ -782,7 +954,7 @@ angulo.addEventListener(
 
 
 /* =========================================================
-   JOYSTICK
+   CREAR JOYSTICK
    ========================================================= */
 
 function crearJoystick(elemento) {
@@ -935,7 +1107,7 @@ function crearJoystick(elemento) {
 
 
 /* =========================================================
-   CREAR JOYSTICKS
+   JOYSTICKS
    ========================================================= */
 
 const movimiento =
@@ -950,7 +1122,7 @@ const direccion =
 
 
 /* =========================================================
-   BARRA DE MOVIMIENTO
+   BARRA MOVIMIENTO
    ========================================================= */
 
 function actualizarBarraMovimiento(valor) {
@@ -968,9 +1140,7 @@ function actualizarBarraMovimiento(valor) {
 
     if (valor < 0) {
 
-        /*
-            ARRIBA = AVANZAR
-        */
+        /* ARRIBA */
 
         rellenoMovimiento.style.top =
             (50 - porcentaje / 2) + "%";
@@ -982,9 +1152,7 @@ function actualizarBarraMovimiento(valor) {
 
     else if (valor > 0) {
 
-        /*
-            ABAJO = RETROCEDER
-        */
+        /* ABAJO */
 
         rellenoMovimiento.style.top =
             "50%";
@@ -1008,7 +1176,7 @@ function actualizarBarraMovimiento(valor) {
 
 
 /* =========================================================
-   BARRA DE DIRECCIÓN
+   BARRA DIRECCIÓN
    ========================================================= */
 
 function actualizarBarraDireccion(valor) {
@@ -1026,10 +1194,6 @@ function actualizarBarraDireccion(valor) {
 
     if (valor < 0) {
 
-        /*
-            IZQUIERDA
-        */
-
         rellenoDireccion.style.top =
             (50 - porcentaje / 2) + "%";
 
@@ -1039,10 +1203,6 @@ function actualizarBarraDireccion(valor) {
     }
 
     else if (valor > 0) {
-
-        /*
-            DERECHA
-        */
 
         rellenoDireccion.style.top =
             "50%";
@@ -1066,7 +1226,7 @@ function actualizarBarraDireccion(valor) {
 
 
 /* =========================================================
-   ACTUALIZAR TODO
+   ACTUALIZAR CONTROL
    ========================================================= */
 
 function actualizarControl() {
@@ -1081,19 +1241,10 @@ function actualizarControl() {
         direccion.obtenerX();
 
 
-    /*
-        ARRIBA = AVANZAR
-        ABAJO = RETROCEDER
-    */
-
     actualizarBarraMovimiento(
         yMovimiento
     );
 
-
-    /*
-        IZQUIERDA / DERECHA
-    */
 
     actualizarBarraDireccion(
         xDireccion
@@ -1134,9 +1285,7 @@ freno.addEventListener(
 
         actualizarBarraDireccion(0);
 
-        console.log(
-            "FRENO"
-        );
+        console.log("FRENO");
 
     }
 );
@@ -1152,9 +1301,7 @@ centrar.addEventListener(
 
         actualizarBarraDireccion(0);
 
-        console.log(
-            "CENTRAR"
-        );
+        console.log("CENTRAR");
 
     }
 );
@@ -1171,7 +1318,7 @@ document
         () => {
 
             alert(
-                "La conexión Bluetooth se añadirá cuando probemos con el SPIKE Prime."
+                "La conexión Bluetooth se añadirá cuando tengamos el SPIKE Prime."
             );
 
         }
@@ -1189,4 +1336,5 @@ actualizarBarraDireccion(0);
 </script>
 
 </body>
+
 </html>
