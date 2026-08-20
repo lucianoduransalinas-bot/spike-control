@@ -25,15 +25,11 @@ html,
 body {
     margin: 0;
     padding: 0;
-
     width: 100%;
     height: 100%;
-
     overflow: hidden;
-
     background: #080c14;
     color: white;
-
     font-family: Arial, sans-serif;
 }
 
@@ -44,19 +40,10 @@ body {
 
 #app {
     position: fixed;
-
     inset: 0;
-
     width: 100vw;
     height: 100dvh;
-
     overflow: hidden;
-
-    padding:
-        env(safe-area-inset-top)
-        env(safe-area-inset-right)
-        env(safe-area-inset-bottom)
-        env(safe-area-inset-left);
 }
 
 
@@ -72,20 +59,16 @@ body {
     right: 1vw;
 
     height: 7vh;
-
     min-height: 34px;
 
     display: flex;
-
     align-items: center;
     justify-content: space-between;
 
     padding: 0 1.5vw;
 
     background: #111827;
-
     border: 1px solid #263247;
-
     border-radius: 12px;
 
     z-index: 100;
@@ -93,13 +76,13 @@ body {
 
 #titulo {
     font-size: clamp(13px, 3vw, 22px);
-
     font-weight: bold;
 }
 
 #estado {
-    font-size: clamp(9px, 2vw, 14px);
+    margin-right: 9vw;
 
+    font-size: clamp(9px, 2vw, 14px);
     font-weight: bold;
 
     color: #f87171;
@@ -107,7 +90,34 @@ body {
 
 
 /* =====================================================
-   CONTROL
+   BOTÓN FULLSCREEN
+   ===================================================== */
+
+#fullscreen {
+    position: fixed;
+
+    top: 1vh;
+    right: 1vw;
+
+    width: clamp(38px, 8vw, 75px);
+    height: clamp(32px, 6vh, 42px);
+
+    border: none;
+    border-radius: 10px;
+
+    background: #334155;
+    color: white;
+
+    font-size: clamp(16px, 3vw, 21px);
+
+    z-index: 200;
+
+    touch-action: manipulation;
+}
+
+
+/* =====================================================
+   ZONA PRINCIPAL
    ===================================================== */
 
 #control {
@@ -249,27 +259,18 @@ body {
 
 
 /* =====================================================
-   JOYSTICK IZQUIERDO
+   POSICIONES
    ===================================================== */
 
 #joystickIzquierdo {
     left: 1vw;
-
     top: 52%;
-
     transform: translateY(-50%);
 }
 
-
-/* =====================================================
-   JOYSTICK DERECHO
-   ===================================================== */
-
 #joystickDerecho {
     right: 12vw;
-
     top: 52%;
-
     transform: translateY(-50%);
 }
 
@@ -282,7 +283,7 @@ body {
     position: absolute;
 
     left: 50%;
-    top: 53%;
+    top: 52%;
 
     transform: translate(-50%, -50%);
 
@@ -298,7 +299,36 @@ body {
 }
 
 #robot {
-    font-size: clamp(20px, 5vw, 40px);
+    width: clamp(65px, 10vw, 100px);
+    height: clamp(65px, 10vw, 100px);
+
+    position: relative;
+
+    display: flex;
+
+    align-items: center;
+    justify-content: center;
+
+    font-size: clamp(30px, 6vw, 55px);
+
+    background: #172238;
+
+    border: 3px solid #475569;
+
+    border-radius: 20px;
+
+    box-shadow:
+        0 0 20px rgba(34,197,94,.15);
+}
+
+#robotFlecha {
+    position: absolute;
+
+    top: -20px;
+
+    font-size: clamp(15px, 3vw, 25px);
+
+    color: #22c55e;
 }
 
 #freno,
@@ -335,14 +365,49 @@ body {
 
 
 /* =====================================================
-   BARRAS DERECHA
+   INFORMACIÓN DEL ROBOT
+   ===================================================== */
+
+#robotInfo {
+    position: absolute;
+
+    left: 50%;
+    top: calc(52% + 17vh);
+
+    transform: translateX(-50%);
+
+    width: min(35vw, 250px);
+
+    padding: 6px;
+
+    background: rgba(17,24,39,.9);
+
+    border: 1px solid #334155;
+
+    border-radius: 10px;
+
+    text-align: center;
+
+    font-size: clamp(7px, 1.6vw, 11px);
+
+    color: #94a3b8;
+
+    z-index: 25;
+}
+
+#robotInfo span {
+    color: white;
+}
+
+
+/* =====================================================
+   BARRAS
    ===================================================== */
 
 #barrasDerecha {
     position: fixed;
 
     right: .8vw;
-
     top: 52%;
 
     transform: translateY(-50%);
@@ -527,38 +592,7 @@ input[type="range"] {
 
 
 /* =====================================================
-   FULLSCREEN
-   ===================================================== */
-
-#fullscreen {
-    position: fixed;
-
-    top: 1vh;
-
-    right: 1vw;
-
-    width: clamp(38px, 8vw, 75px);
-
-    height: clamp(32px, 6vh, 42px);
-
-    border: none;
-
-    border-radius: 10px;
-
-    background: #334155;
-
-    color: white;
-
-    font-size: clamp(16px, 3vw, 21px);
-
-    z-index: 200;
-
-    touch-action: manipulation;
-}
-
-
-/* =====================================================
-   MÓVIL
+   CELULAR
    ===================================================== */
 
 @media (max-width: 600px) {
@@ -608,6 +642,10 @@ input[type="range"] {
         right: 3vw;
         width: 20vw;
     }
+
+    #robotInfo {
+        top: calc(52% + 16vh);
+    }
 }
 
 
@@ -640,6 +678,16 @@ input[type="range"] {
 
     #centro {
         gap: 3px;
+    }
+
+    #robot {
+        width: 60px;
+        height: 60px;
+        font-size: 30px;
+    }
+
+    #robotInfo {
+        top: calc(52% + 18vh);
     }
 
     #config {
@@ -689,7 +737,6 @@ input[type="range"] {
 
 <body>
 
-
 <div id="app">
 
 
@@ -704,14 +751,14 @@ input[type="range"] {
     </div>
 
     <div id="estado">
-        🔴 DESCONECTADO
+        🟡 SIMULACIÓN
     </div>
 
 </div>
 
 
 <!-- =====================================================
-     BOTÓN FULLSCREEN
+     FULLSCREEN
      ===================================================== -->
 
 <button id="fullscreen">
@@ -720,142 +767,180 @@ input[type="range"] {
 
 
 <!-- =====================================================
-     CONTROL
+     CONTROLES
      ===================================================== -->
 
 <div id="control">
 
 
-    <!-- =================================================
-         JOYSTICK MOVIMIENTO
-         ================================================= -->
+<!-- =====================================================
+     JOYSTICK MOVIMIENTO
+     ===================================================== -->
+
+<div
+    id="joystickIzquierdo"
+    class="joystickArea"
+>
+
+    <div class="joystickTitulo">
+        MOVIMIENTO
+    </div>
 
     <div
-        id="joystickIzquierdo"
-        class="joystickArea"
+        id="joystickMovimiento"
+        class="joystick"
     >
 
-        <div class="joystickTitulo">
-            MOVIMIENTO
+        <div class="palanca"></div>
+
+    </div>
+
+</div>
+
+
+<!-- =====================================================
+     ROBOT VIRTUAL
+     ===================================================== -->
+
+<div id="centro">
+
+    <div id="robot">
+
+        <div id="robotFlecha">
+            ▲
         </div>
 
-        <div
-            id="joystickMovimiento"
-            class="joystick"
-        >
-
-            <div class="palanca"></div>
-
-        </div>
+        🤖
 
     </div>
 
 
-    <!-- =================================================
-         CENTRO
-         ================================================= -->
-
-    <div id="centro">
-
-        <div id="robot">
-            🤖
-        </div>
-
-        <button id="freno">
-            ⏹ FRENO
-        </button>
-
-        <button id="centrar">
-            🎯 CENTRAR
-        </button>
-
-    </div>
-
-
-    <!-- =================================================
-         JOYSTICK DIRECCIÓN
-         ================================================= -->
-
-    <div
-        id="joystickDerecho"
-        class="joystickArea"
-    >
-
-        <div class="joystickTitulo">
-            DIRECCIÓN
-        </div>
-
-        <div
-            id="joystickDireccion"
-            class="joystick"
-        >
-
-            <div class="palanca"></div>
-
-        </div>
-
-    </div>
-
-
-    <!-- =================================================
-         CONFIGURACIÓN
-         ================================================= -->
-
-    <div id="config">
-
-        <div class="configLinea">
-
-            <span>
-                VELOCIDAD
-            </span>
-
-            <input
-                id="velocidad"
-                type="range"
-                min="100"
-                max="1000"
-                value="700"
-                step="50"
-            >
-
-            <b id="velocidadValor">
-                700
-            </b>
-
-        </div>
-
-
-        <div class="configLinea">
-
-            <span>
-                ÁNGULO
-            </span>
-
-            <input
-                id="angulo"
-                type="range"
-                min="10"
-                max="180"
-                value="90"
-                step="5"
-            >
-
-            <b id="anguloValor">
-                90°
-            </b>
-
-        </div>
-
-    </div>
-
-
-    <!-- =================================================
-         CONECTAR
-         ================================================= -->
-
-    <button id="conectar">
-        🔵 CONECTAR HUB
+    <button id="freno">
+        ⏹ FRENO
     </button>
+
+
+    <button id="centrar">
+        🎯 CENTRAR
+    </button>
+
+</div>
+
+
+<!-- =====================================================
+     INFORMACIÓN
+     ===================================================== -->
+
+<div id="robotInfo">
+
+    MOTOR A:
+    <span id="motorA">
+        0%
+    </span>
+
+    &nbsp; | &nbsp;
+
+    MOTOR D:
+    <span id="motorD">
+        0%
+    </span>
+
+    <br>
+
+    DIRECCIÓN B:
+    <span id="motorB">
+        0°
+    </span>
+
+</div>
+
+
+<!-- =====================================================
+     JOYSTICK DIRECCIÓN
+     ===================================================== -->
+
+<div
+    id="joystickDerecho"
+    class="joystickArea"
+>
+
+    <div class="joystickTitulo">
+        DIRECCIÓN
+    </div>
+
+    <div
+        id="joystickDireccion"
+        class="joystick"
+    >
+
+        <div class="palanca"></div>
+
+    </div>
+
+</div>
+
+
+<!-- =====================================================
+     CONFIGURACIÓN
+     ===================================================== -->
+
+<div id="config">
+
+
+    <div class="configLinea">
+
+        <span>
+            VELOCIDAD
+        </span>
+
+        <input
+            id="velocidad"
+            type="range"
+            min="100"
+            max="1000"
+            value="700"
+            step="50"
+        >
+
+        <b id="velocidadValor">
+            700
+        </b>
+
+    </div>
+
+
+    <div class="configLinea">
+
+        <span>
+            ÁNGULO
+        </span>
+
+        <input
+            id="angulo"
+            type="range"
+            min="10"
+            max="180"
+            value="90"
+            step="5"
+        >
+
+        <b id="anguloValor">
+            90°
+        </b>
+
+    </div>
+
+</div>
+
+
+<!-- =====================================================
+     CONECTAR
+     ===================================================== -->
+
+<button id="conectar">
+    🔵 CONECTAR HUB
+</button>
+
 
 </div>
 
@@ -904,14 +989,18 @@ input[type="range"] {
 
         <div class="medidor">
 
-            <div
-                id="rellenoDireccion"
-                class="medidorRelleno"
-            ></div>
+            <div class="medidor">
 
-            <div
-                class="medidorCentro"
-            ></div>
+                <div
+                    id="rellenoDireccion"
+                    class="medidorRelleno"
+                ></div>
+
+                <div
+                    class="medidorCentro"
+                ></div>
+
+            </div>
 
         </div>
 
@@ -1007,6 +1096,50 @@ const estado =
         "estado"
     );
 
+const motorA =
+    document.getElementById(
+        "motorA"
+    );
+
+const motorB =
+    document.getElementById(
+        "motorB"
+    );
+
+const motorD =
+    document.getElementById(
+        "motorD"
+    );
+
+const robot =
+    document.getElementById(
+        "robot"
+    );
+
+const robotFlecha =
+    document.getElementById(
+        "robotFlecha"
+    );
+
+
+/* =========================================================
+   VARIABLES DEL ROBOT
+   ========================================================= */
+
+let velocidadActual = 0;
+
+let direccionActual = 0;
+
+let anguloActual = 0;
+
+let posicionX = 0;
+
+let posicionY = 0;
+
+let rotacion = 0;
+
+let frenado = false;
+
 
 /* =========================================================
    VELOCIDAD
@@ -1051,12 +1184,8 @@ async function entrarFullscreen() {
             await document.documentElement.requestFullscreen();
 
             fullscreen.textContent =
-                "⛶";
+                "✕";
 
-            /*
-             * Algunos navegadores permiten
-             * bloquear la orientación.
-             */
 
             if (
                 screen.orientation &&
@@ -1072,7 +1201,7 @@ async function entrarFullscreen() {
                 } catch (error) {
 
                     console.log(
-                        "Orientación no disponible"
+                        "Bloqueo de orientación no disponible"
                     );
 
                 }
@@ -1106,10 +1235,6 @@ fullscreen.addEventListener(
 );
 
 
-/* =========================================================
-   CAMBIO DE FULLSCREEN
-   ========================================================= */
-
 document.addEventListener(
     "fullscreenchange",
     () => {
@@ -1131,7 +1256,7 @@ document.addEventListener(
 
 
 /* =========================================================
-   CREAR JOYSTICK
+   JOYSTICK
    ========================================================= */
 
 function crearJoystick(elemento) {
@@ -1290,7 +1415,7 @@ function crearJoystick(elemento) {
 
 
 /* =========================================================
-   CREAR JOYSTICKS
+   JOYSTICKS
    ========================================================= */
 
 const movimiento =
@@ -1406,51 +1531,172 @@ function actualizarBarraDireccion(valor) {
 
 
 /* =========================================================
+   SIMULACIÓN DEL ROBOT
+   ========================================================= */
+
+function actualizarSimulacion() {
+
+    const movimientoY =
+        movimiento.obtenerY();
+
+    const direccionX =
+        direccion.obtenerX();
+
+
+    if (frenado) {
+
+        velocidadActual = 0;
+
+        direccionActual = 0;
+
+    } else {
+
+        velocidadActual =
+            -movimientoY;
+
+        direccionActual =
+            direccionX;
+
+    }
+
+
+    /*
+     * MOTOR A
+     * Rueda izquierda
+     */
+
+    let motorIzquierdo =
+        velocidadActual -
+        direccionActual;
+
+
+    /*
+     * MOTOR D
+     * Rueda derecha
+     */
+
+    let motorDerecho =
+        velocidadActual +
+        direccionActual;
+
+
+    motorIzquierdo =
+        Math.max(
+            -1,
+            Math.min(
+                1,
+                motorIzquierdo
+            )
+        );
+
+
+    motorDerecho =
+        Math.max(
+            -1,
+            Math.min(
+                1,
+                motorDerecho
+            )
+        );
+
+
+    /*
+     * DIRECCIÓN B
+     */
+
+    anguloActual =
+        direccionActual *
+        Number(
+            angulo.value
+        );
+
+
+    /*
+     * MOSTRAR MOTORES
+     */
+
+    motorA.textContent =
+        Math.round(
+            motorIzquierdo * 100
+        ) + "%";
+
+
+    motorD.textContent =
+        Math.round(
+            motorDerecho * 100
+        ) + "%";
+
+
+    motorB.textContent =
+        Math.round(
+            anguloActual
+        ) + "°";
+
+
+    /*
+     * GIRAR ROBOT VIRTUAL
+     */
+
+    rotacion +=
+        direccionActual *
+        velocidadActual *
+        2;
+
+
+    robot.style.transform =
+        `rotate(${rotacion}deg)`;
+
+
+    /*
+     * FLECHA
+     */
+
+    robotFlecha.style.transform =
+        `rotate(${-rotacion}deg)`;
+
+
+    /*
+     * BARRAS
+     */
+
+    actualizarBarraMovimiento(
+        movimientoY
+    );
+
+
+    actualizarBarraDireccion(
+        direccionX
+    );
+
+}
+
+
+/* =========================================================
    ACTUALIZAR CONTROL
    ========================================================= */
 
 function actualizarControl() {
 
-    const xMovimiento =
-        movimiento.obtenerX();
-
-    const yMovimiento =
-        movimiento.obtenerY();
-
-    const xDireccion =
-        direccion.obtenerX();
-
-
-    actualizarBarraMovimiento(
-        yMovimiento
-    );
-
-
-    actualizarBarraDireccion(
-        xDireccion
-    );
-
-
-    console.log({
-
-        movimientoX:
-            xMovimiento,
-
-        movimientoY:
-            yMovimiento,
-
-        direccion:
-            xDireccion,
-
-        velocidad:
-            velocidad.value,
-
-        angulo:
-            angulo.value
-
-    });
+    actualizarSimulacion();
 
 }
+
+
+/* =========================================================
+   ANIMACIÓN
+   ========================================================= */
+
+function bucle() {
+
+    actualizarSimulacion();
+
+    requestAnimationFrame(
+        bucle
+    );
+
+}
+
+bucle();
 
 
 /* =========================================================
@@ -1461,38 +1707,77 @@ freno.addEventListener(
     "pointerdown",
     () => {
 
+        frenado = true;
+
         actualizarBarraMovimiento(0);
 
         actualizarBarraDireccion(0);
 
-        console.log(
-            "FRENO"
-        );
+        motorA.textContent =
+            "0%";
+
+        motorD.textContent =
+            "0%";
+
+        motorB.textContent =
+            "0°";
+
+    }
+);
+
+
+freno.addEventListener(
+    "pointerup",
+    () => {
+
+        frenado = false;
+
+    }
+);
+
+
+freno.addEventListener(
+    "pointercancel",
+    () => {
+
+        frenado = false;
 
     }
 );
 
 
 /* =========================================================
-   CENTRAR
+   CENTRAR DIRECCIÓN
    ========================================================= */
 
 centrar.addEventListener(
     "pointerdown",
     () => {
 
+        const palanca =
+            joystickDireccion.querySelector(
+                ".palanca"
+            );
+
+
+        palanca.style.left =
+            "50%";
+
+        palanca.style.top =
+            "50%";
+
+
         actualizarBarraDireccion(0);
 
-        console.log(
-            "CENTRAR"
-        );
+        motorB.textContent =
+            "0°";
 
     }
 );
 
 
 /* =========================================================
-   CONECTAR
+   CONECTAR HUB
    ========================================================= */
 
 document
@@ -1502,7 +1787,7 @@ document
         () => {
 
             estado.textContent =
-                "🟡 BUSCANDO...";
+                "🟡 SIMULACIÓN";
 
             estado.style.color =
                 "#facc15";
@@ -1512,17 +1797,149 @@ document
                 () => {
 
                     estado.textContent =
-                        "🔴 SIN HUB";
+                        "🟢 SIMULADOR ACTIVO";
 
                     estado.style.color =
-                        "#f87171";
+                        "#22c55e";
 
                 },
-                1500
+                800
             );
 
         }
     );
+
+
+/* =========================================================
+   TECLADO PC
+   ========================================================= */
+
+const teclas = {};
+
+
+document.addEventListener(
+    "keydown",
+    evento => {
+
+        teclas[
+            evento.key.toLowerCase()
+        ] = true;
+
+
+        if (
+            evento.key.toLowerCase()
+            === "x"
+        ) {
+
+            frenado = true;
+
+        }
+
+
+        if (
+            evento.key.toLowerCase()
+            === "c"
+        ) {
+
+            centrar.click();
+
+        }
+
+    }
+);
+
+
+document.addEventListener(
+    "keyup",
+    evento => {
+
+        teclas[
+            evento.key.toLowerCase()
+        ] = false;
+
+
+        if (
+            evento.key.toLowerCase()
+            === "x"
+        ) {
+
+            frenado = false;
+
+        }
+
+    }
+);
+
+
+/* =========================================================
+   CONTROL WASD
+   ========================================================= */
+
+function tecladoControl() {
+
+    let movimientoTeclado = 0;
+
+    let direccionTeclado = 0;
+
+
+    if (teclas["w"]) {
+
+        movimientoTeclado = 1;
+
+    }
+
+    if (teclas["s"]) {
+
+        movimientoTeclado = -1;
+
+    }
+
+    if (teclas["a"]) {
+
+        direccionTeclado = -1;
+
+    }
+
+    if (teclas["d"]) {
+
+        direccionTeclado = 1;
+
+    }
+
+
+    if (
+        movimientoTeclado !== 0 ||
+        direccionTeclado !== 0
+    ) {
+
+        actualizarBarraMovimiento(
+            movimientoTeclado
+        );
+
+        actualizarBarraDireccion(
+            direccionTeclado
+        );
+
+
+        velocidadActual =
+            movimientoTeclado;
+
+        direccionActual =
+            direccionTeclado;
+
+    }
+
+}
+
+
+/* =========================================================
+   BUCLE DE TECLADO
+   ========================================================= */
+
+setInterval(
+    tecladoControl,
+    30
+);
 
 
 /* =========================================================
@@ -1532,41 +1949,6 @@ document
 actualizarBarraMovimiento(0);
 
 actualizarBarraDireccion(0);
-
-
-/* =========================================================
-   RECALCULAR AL CAMBIAR TAMAÑO
-   ========================================================= */
-
-window.addEventListener(
-    "resize",
-    () => {
-
-        actualizarControl();
-
-    }
-);
-
-
-/* =========================================================
-   CAMBIO DE ORIENTACIÓN
-   ========================================================= */
-
-window.addEventListener(
-    "orientationchange",
-    () => {
-
-        setTimeout(
-            () => {
-
-                actualizarControl();
-
-            },
-            300
-        );
-
-    }
-);
 
 </script>
 
