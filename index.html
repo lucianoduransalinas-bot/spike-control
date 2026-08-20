@@ -7,7 +7,7 @@
 
 <meta
     name="viewport"
-    content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no"
+    content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no, viewport-fit=cover"
 >
 
 <title>SPIKE CONTROL</title>
@@ -25,20 +25,38 @@ html,
 body {
     margin: 0;
     padding: 0;
+
     width: 100%;
     height: 100%;
+
     overflow: hidden;
+
     background: #080c14;
     color: white;
+
     font-family: Arial, sans-serif;
+}
+
+body {
+    width: 100vw;
+    height: 100dvh;
 }
 
 #app {
     position: fixed;
+
     inset: 0;
+
     width: 100vw;
-    height: 100vh;
+    height: 100dvh;
+
     overflow: hidden;
+
+    padding:
+        env(safe-area-inset-top)
+        env(safe-area-inset-right)
+        env(safe-area-inset-bottom)
+        env(safe-area-inset-left);
 }
 
 
@@ -48,44 +66,55 @@ body {
 
 #top {
     position: absolute;
-    top: 1.5vh;
-    left: 1.5vw;
-    right: 1.5vw;
+
+    top: 1vh;
+    left: 1vw;
+    right: 1vw;
+
     height: 7vh;
-    min-height: 35px;
+
+    min-height: 34px;
 
     display: flex;
+
     align-items: center;
     justify-content: space-between;
 
-    padding: 0 2vw;
+    padding: 0 1.5vw;
 
     background: #111827;
+
     border: 1px solid #263247;
+
     border-radius: 12px;
 
-    z-index: 50;
+    z-index: 100;
 }
 
 #titulo {
-    font-size: clamp(14px, 3vw, 22px);
+    font-size: clamp(13px, 3vw, 22px);
+
     font-weight: bold;
 }
 
 #estado {
-    font-size: clamp(10px, 2vw, 14px);
+    font-size: clamp(9px, 2vw, 14px);
+
     font-weight: bold;
+
     color: #f87171;
 }
 
 
 /* =====================================================
-   ZONA PRINCIPAL
+   CONTROL
    ===================================================== */
 
 #control {
     position: absolute;
+
     inset: 0;
+
     width: 100%;
     height: 100%;
 }
@@ -98,11 +127,13 @@ body {
 .joystickArea {
     position: absolute;
 
-    width: 25vw;
-    height: 48vh;
+    width: 28vw;
+    height: 45vh;
 
     display: flex;
+
     flex-direction: column;
+
     align-items: center;
     justify-content: center;
 }
@@ -110,16 +141,19 @@ body {
 .joystickTitulo {
     margin-bottom: 1vh;
 
-    font-size: clamp(9px, 2vw, 14px);
     color: #94a3b8;
+
+    font-size: clamp(8px, 2vw, 14px);
+
+    font-weight: bold;
 }
 
 .joystick {
-    width: min(24vw, 190px);
-    height: min(24vw, 190px);
+    width: min(27vw, 190px);
+    height: min(27vw, 190px);
 
-    min-width: 120px;
-    min-height: 120px;
+    min-width: 105px;
+    min-height: 105px;
 
     max-width: 190px;
     max-height: 190px;
@@ -180,11 +214,11 @@ body {
 .palanca {
     position: absolute;
 
-    width: min(9vw, 65px);
-    height: min(9vw, 65px);
+    width: min(10vw, 65px);
+    height: min(10vw, 65px);
 
-    min-width: 48px;
-    min-height: 48px;
+    min-width: 45px;
+    min-height: 45px;
 
     max-width: 65px;
     max-height: 65px;
@@ -201,7 +235,7 @@ body {
             circle at 35% 30%,
             #64748b,
             #334155 55%,
-            #1e293b 100%
+            #1e293b
         );
 
     border: 3px solid #64748b;
@@ -215,24 +249,28 @@ body {
 
 
 /* =====================================================
-   POSICIÓN JOYSTICK IZQUIERDO
+   JOYSTICK IZQUIERDO
    ===================================================== */
 
 #joystickIzquierdo {
-    left: 2vw;
-    top: 50%;
-    transform: translateY(-45%);
+    left: 1vw;
+
+    top: 52%;
+
+    transform: translateY(-50%);
 }
 
 
 /* =====================================================
-   POSICIÓN JOYSTICK DERECHO
+   JOYSTICK DERECHO
    ===================================================== */
 
 #joystickDerecho {
-    right: 13vw;
-    top: 50%;
-    transform: translateY(-45%);
+    right: 12vw;
+
+    top: 52%;
+
+    transform: translateY(-50%);
 }
 
 
@@ -249,12 +287,14 @@ body {
     transform: translate(-50%, -50%);
 
     display: flex;
+
     flex-direction: column;
+
     align-items: center;
 
     gap: 1vh;
 
-    z-index: 20;
+    z-index: 30;
 }
 
 #robot {
@@ -264,15 +304,20 @@ body {
 #freno,
 #centrar {
     width: clamp(75px, 15vw, 115px);
-    height: clamp(38px, 8vh, 52px);
+
+    height: clamp(36px, 7vh, 50px);
 
     border: none;
+
     border-radius: 12px;
 
     color: white;
 
     font-size: clamp(9px, 2vw, 14px);
+
     font-weight: bold;
+
+    touch-action: manipulation;
 }
 
 #freno {
@@ -290,22 +335,23 @@ body {
 
 
 /* =====================================================
-   BARRAS EN EL EXTREMO DERECHO
+   BARRAS DERECHA
    ===================================================== */
 
 #barrasDerecha {
     position: fixed;
 
-    right: 1vw;
-    top: 50%;
+    right: .8vw;
+
+    top: 52%;
 
     transform: translateY(-50%);
 
     display: flex;
+
     flex-direction: column;
 
     align-items: center;
-    justify-content: center;
 
     gap: 2vh;
 
@@ -314,14 +360,16 @@ body {
 
 .medidorContenedor {
     display: flex;
+
     flex-direction: column;
+
     align-items: center;
 
     gap: .5vh;
 }
 
 .medidorTitulo {
-    font-size: clamp(7px, 1.6vw, 11px);
+    font-size: clamp(7px, 1.5vw, 11px);
 
     color: #94a3b8;
 
@@ -331,11 +379,11 @@ body {
 }
 
 .medidor {
-    width: clamp(17px, 3vw, 27px);
+    width: clamp(16px, 3vw, 27px);
 
-    height: min(30vh, 145px);
+    height: min(28vh, 145px);
 
-    min-height: 80px;
+    min-height: 70px;
 
     position: relative;
 
@@ -382,7 +430,8 @@ body {
 }
 
 .medidorValor {
-    font-size: clamp(7px, 1.7vw, 11px);
+    font-size: clamp(7px, 1.5vw, 11px);
+
     color: #94a3b8;
 }
 
@@ -395,13 +444,14 @@ body {
     position: fixed;
 
     left: 50%;
+
     bottom: 1vh;
 
     transform: translateX(-50%);
 
-    width: min(38vw, 330px);
+    width: min(35vw, 320px);
 
-    padding: 5px 8px;
+    padding: 4px 7px;
 
     background: #111827;
 
@@ -409,7 +459,7 @@ body {
 
     border-radius: 10px;
 
-    z-index: 40;
+    z-index: 50;
 }
 
 .configLinea {
@@ -426,29 +476,34 @@ body {
     width: 55px;
 
     font-size: 8px;
+
     color: #cbd5e1;
 }
 
 input[type="range"] {
     flex: 1;
+
     min-width: 0;
+
     height: 15px;
 }
 
 .configLinea b {
     font-size: 8px;
-    min-width: 25px;
+
+    min-width: 28px;
 }
 
 
 /* =====================================================
-   BOTÓN CONECTAR
+   CONECTAR
    ===================================================== */
 
 #conectar {
     position: fixed;
 
-    right: 5vw;
+    right: 4vw;
+
     bottom: 1vh;
 
     width: min(18vw, 160px);
@@ -456,6 +511,7 @@ input[type="range"] {
     height: clamp(32px, 6vh, 42px);
 
     border: none;
+
     border-radius: 10px;
 
     background: #22c55e;
@@ -471,29 +527,69 @@ input[type="range"] {
 
 
 /* =====================================================
-   CELULAR
+   FULLSCREEN
+   ===================================================== */
+
+#fullscreen {
+    position: fixed;
+
+    top: 1vh;
+
+    right: 1vw;
+
+    width: clamp(38px, 8vw, 75px);
+
+    height: clamp(32px, 6vh, 42px);
+
+    border: none;
+
+    border-radius: 10px;
+
+    background: #334155;
+
+    color: white;
+
+    font-size: clamp(16px, 3vw, 21px);
+
+    z-index: 200;
+
+    touch-action: manipulation;
+}
+
+
+/* =====================================================
+   MÓVIL
    ===================================================== */
 
 @media (max-width: 600px) {
 
-    .joystick {
-        width: 27vw;
-        height: 27vw;
+    #titulo {
+        font-size: 14px;
+    }
 
-        min-width: 110px;
-        min-height: 110px;
+    #estado {
+        margin-right: 55px;
+        font-size: 9px;
+    }
+
+    .joystick {
+        width: 29vw;
+        height: 29vw;
+
+        min-width: 105px;
+        min-height: 105px;
     }
 
     .palanca {
-        width: 16vw;
-        height: 16vw;
+        width: 15vw;
+        height: 15vw;
 
         min-width: 45px;
         min-height: 45px;
     }
 
     #joystickIzquierdo {
-        left: 1vw;
+        left: .5vw;
     }
 
     #joystickDerecho {
@@ -501,7 +597,7 @@ input[type="range"] {
     }
 
     #barrasDerecha {
-        right: .8vw;
+        right: .5vw;
     }
 
     #config {
@@ -509,7 +605,7 @@ input[type="range"] {
     }
 
     #conectar {
-        right: 4vw;
+        right: 3vw;
         width: 20vw;
     }
 }
@@ -522,15 +618,15 @@ input[type="range"] {
 @media (max-height: 450px) {
 
     #top {
-        height: 32px;
+        height: 34px;
     }
 
     .joystick {
-        width: min(25vw, 150px);
-        height: min(25vw, 150px);
+        width: min(27vw, 155px);
+        height: min(27vw, 155px);
 
-        min-width: 100px;
-        min-height: 100px;
+        min-width: 95px;
+        min-height: 95px;
     }
 
     .palanca {
@@ -580,14 +676,13 @@ input[type="range"] {
 
         color: white;
 
-        font-size: 24px;
+        font-size: 23px;
 
         font-weight: bold;
     }
 }
 
 </style>
-
 
 </head>
 
@@ -616,6 +711,15 @@ input[type="range"] {
 
 
 <!-- =====================================================
+     BOTÓN FULLSCREEN
+     ===================================================== -->
+
+<button id="fullscreen">
+    ⛶
+</button>
+
+
+<!-- =====================================================
      CONTROL
      ===================================================== -->
 
@@ -623,7 +727,7 @@ input[type="range"] {
 
 
     <!-- =================================================
-         JOYSTICK IZQUIERDO
+         JOYSTICK MOVIMIENTO
          ================================================= -->
 
     <div
@@ -669,7 +773,7 @@ input[type="range"] {
 
 
     <!-- =================================================
-         JOYSTICK DERECHO
+         JOYSTICK DIRECCIÓN
          ================================================= -->
 
     <div
@@ -757,13 +861,11 @@ input[type="range"] {
 
 
 <!-- =====================================================
-     BARRAS
+     BARRAS DERECHA
      ===================================================== -->
 
 <div id="barrasDerecha">
 
-
-    <!-- MOVIMIENTO -->
 
     <div class="medidorContenedor">
 
@@ -793,8 +895,6 @@ input[type="range"] {
 
     </div>
 
-
-    <!-- DIRECCIÓN -->
 
     <div class="medidorContenedor">
 
@@ -897,6 +997,16 @@ const centrar =
         "centrar"
     );
 
+const fullscreen =
+    document.getElementById(
+        "fullscreen"
+    );
+
+const estado =
+    document.getElementById(
+        "estado"
+    );
+
 
 /* =========================================================
    VELOCIDAD
@@ -929,6 +1039,98 @@ angulo.addEventListener(
 
 
 /* =========================================================
+   FULLSCREEN
+   ========================================================= */
+
+async function entrarFullscreen() {
+
+    try {
+
+        if (!document.fullscreenElement) {
+
+            await document.documentElement.requestFullscreen();
+
+            fullscreen.textContent =
+                "⛶";
+
+            /*
+             * Algunos navegadores permiten
+             * bloquear la orientación.
+             */
+
+            if (
+                screen.orientation &&
+                screen.orientation.lock
+            ) {
+
+                try {
+
+                    await screen.orientation.lock(
+                        "landscape"
+                    );
+
+                } catch (error) {
+
+                    console.log(
+                        "Orientación no disponible"
+                    );
+
+                }
+
+            }
+
+        } else {
+
+            await document.exitFullscreen();
+
+            fullscreen.textContent =
+                "⛶";
+
+        }
+
+    } catch (error) {
+
+        console.log(
+            "Fullscreen no disponible:",
+            error
+        );
+
+    }
+
+}
+
+
+fullscreen.addEventListener(
+    "click",
+    entrarFullscreen
+);
+
+
+/* =========================================================
+   CAMBIO DE FULLSCREEN
+   ========================================================= */
+
+document.addEventListener(
+    "fullscreenchange",
+    () => {
+
+        if (document.fullscreenElement) {
+
+            fullscreen.textContent =
+                "✕";
+
+        } else {
+
+            fullscreen.textContent =
+                "⛶";
+
+        }
+
+    }
+);
+
+
+/* =========================================================
    CREAR JOYSTICK
    ========================================================= */
 
@@ -951,8 +1153,10 @@ function crearJoystick(elemento) {
             return;
         }
 
+
         const rect =
             elemento.getBoundingClientRect();
+
 
         const centroX =
             rect.width / 2;
@@ -960,18 +1164,22 @@ function crearJoystick(elemento) {
         const centroY =
             rect.height / 2;
 
+
         let nuevaX =
             evento.clientX -
             rect.left -
             centroX;
+
 
         let nuevaY =
             evento.clientY -
             rect.top -
             centroY;
 
+
         const max =
             rect.width / 2 - 35;
+
 
         const distancia =
             Math.sqrt(
@@ -979,14 +1187,21 @@ function crearJoystick(elemento) {
                 nuevaY * nuevaY
             );
 
+
         if (distancia > max) {
 
             nuevaX =
-                nuevaX / distancia * max;
+                nuevaX /
+                distancia *
+                max;
 
             nuevaY =
-                nuevaY / distancia * max;
+                nuevaY /
+                distancia *
+                max;
+
         }
+
 
         x =
             nuevaX / max;
@@ -994,13 +1209,17 @@ function crearJoystick(elemento) {
         y =
             nuevaY / max;
 
+
         palanca.style.left =
             `calc(50% + ${nuevaX}px)`;
+
 
         palanca.style.top =
             `calc(50% + ${nuevaY}px)`;
 
+
         actualizarControl();
+
     }
 
 
@@ -1011,13 +1230,17 @@ function crearJoystick(elemento) {
         x = 0;
         y = 0;
 
+
         palanca.style.left =
             "50%";
+
 
         palanca.style.top =
             "50%";
 
+
         actualizarControl();
+
     }
 
 
@@ -1032,6 +1255,7 @@ function crearJoystick(elemento) {
             );
 
             mover(evento);
+
         }
     );
 
@@ -1061,17 +1285,19 @@ function crearJoystick(elemento) {
         obtenerY: () => y
 
     };
+
 }
 
 
 /* =========================================================
-   JOYSTICKS
+   CREAR JOYSTICKS
    ========================================================= */
 
 const movimiento =
     crearJoystick(
         joystickMovimiento
     );
+
 
 const direccion =
     crearJoystick(
@@ -1090,6 +1316,7 @@ function actualizarBarraMovimiento(valor) {
             100,
             Math.abs(valor) * 100
         );
+
 
     valorMovimiento.textContent =
         Math.round(porcentaje) + "%";
@@ -1122,7 +1349,9 @@ function actualizarBarraMovimiento(valor) {
 
         rellenoMovimiento.style.height =
             "0%";
+
     }
+
 }
 
 
@@ -1137,6 +1366,7 @@ function actualizarBarraDireccion(valor) {
             100,
             Math.abs(valor) * 100
         );
+
 
     valorDireccion.textContent =
         Math.round(porcentaje) + "%";
@@ -1169,7 +1399,9 @@ function actualizarBarraDireccion(valor) {
 
         rellenoDireccion.style.height =
             "0%";
+
     }
+
 }
 
 
@@ -1192,6 +1424,7 @@ function actualizarControl() {
     actualizarBarraMovimiento(
         yMovimiento
     );
+
 
     actualizarBarraDireccion(
         xDireccion
@@ -1216,6 +1449,7 @@ function actualizarControl() {
             angulo.value
 
     });
+
 }
 
 
@@ -1231,7 +1465,10 @@ freno.addEventListener(
 
         actualizarBarraDireccion(0);
 
-        console.log("FRENO");
+        console.log(
+            "FRENO"
+        );
+
     }
 );
 
@@ -1246,7 +1483,10 @@ centrar.addEventListener(
 
         actualizarBarraDireccion(0);
 
-        console.log("CENTRAR");
+        console.log(
+            "CENTRAR"
+        );
+
     }
 );
 
@@ -1261,8 +1501,24 @@ document
         "click",
         () => {
 
-            alert(
-                "La conexión Bluetooth se añadirá después."
+            estado.textContent =
+                "🟡 BUSCANDO...";
+
+            estado.style.color =
+                "#facc15";
+
+
+            setTimeout(
+                () => {
+
+                    estado.textContent =
+                        "🔴 SIN HUB";
+
+                    estado.style.color =
+                        "#f87171";
+
+                },
+                1500
             );
 
         }
@@ -1276,6 +1532,41 @@ document
 actualizarBarraMovimiento(0);
 
 actualizarBarraDireccion(0);
+
+
+/* =========================================================
+   RECALCULAR AL CAMBIAR TAMAÑO
+   ========================================================= */
+
+window.addEventListener(
+    "resize",
+    () => {
+
+        actualizarControl();
+
+    }
+);
+
+
+/* =========================================================
+   CAMBIO DE ORIENTACIÓN
+   ========================================================= */
+
+window.addEventListener(
+    "orientationchange",
+    () => {
+
+        setTimeout(
+            () => {
+
+                actualizarControl();
+
+            },
+            300
+        );
+
+    }
+);
 
 </script>
 
