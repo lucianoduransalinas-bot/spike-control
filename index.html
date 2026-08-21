@@ -109,8 +109,103 @@ body {
     font-size: clamp(16px, 3vw, 21px);
 
     z-index: 200;
+}
 
-    touch-action: manipulation;
+
+/* =====================================================
+   PANEL DE DIAGNÓSTICO
+   ===================================================== */
+
+#diagnostico {
+    position: fixed;
+
+    left: 1vw;
+    top: 10vh;
+
+    width: clamp(145px, 18vw, 220px);
+
+    padding: 10px;
+
+    background: #111827;
+
+    border: 2px solid #334155;
+
+    border-radius: 12px;
+
+    color: white;
+
+    z-index: 9999;
+
+    box-shadow:
+        0 8px 25px rgba(0,0,0,.5);
+}
+
+#diagnosticoTitulo {
+    text-align: center;
+
+    font-size: clamp(10px, 1.7vw, 14px);
+
+    font-weight: bold;
+
+    padding-bottom: 7px;
+
+    margin-bottom: 5px;
+
+    border-bottom: 1px solid #334155;
+}
+
+.diagnosticoLinea {
+    display: flex;
+
+    justify-content: space-between;
+
+    align-items: center;
+
+    min-height: 22px;
+
+    font-size: clamp(8px, 1.4vw, 11px);
+}
+
+.diagnosticoLinea span:first-child {
+    color: #94a3b8;
+}
+
+.diagnosticoLinea span:last-child {
+    color: white;
+
+    font-weight: bold;
+}
+
+#diagConexion {
+    color: #facc15 !important;
+}
+
+.bateriaBarra {
+    display: inline-block;
+
+    width: 45px;
+    height: 7px;
+
+    margin-left: 4px;
+
+    overflow: hidden;
+
+    vertical-align: middle;
+
+    background: #1e293b;
+
+    border: 1px solid #475569;
+
+    border-radius: 5px;
+}
+
+#bateriaRelleno {
+    display: block;
+
+    width: 87%;
+    height: 100%;
+
+    background: #22c55e;
 }
 
 
@@ -120,6 +215,7 @@ body {
 
 #control {
     position: absolute;
+
     inset: 0;
 
     width: 100%;
@@ -138,6 +234,7 @@ body {
     height: 45vh;
 
     display: flex;
+
     flex-direction: column;
 
     align-items: center;
@@ -150,6 +247,7 @@ body {
     color: #94a3b8;
 
     font-size: clamp(8px, 2vw, 14px);
+
     font-weight: bold;
 }
 
@@ -254,19 +352,23 @@ body {
 
 #joystickIzquierdo {
     left: 1vw;
+
     top: 52%;
+
     transform: translateY(-50%);
 }
 
 #joystickDerecho {
     right: 12vw;
+
     top: 52%;
+
     transform: translateY(-50%);
 }
 
 
 /* =====================================================
-   CENTRO / ROBOT
+   CENTRO
    ===================================================== */
 
 #centro {
@@ -278,6 +380,7 @@ body {
     transform: translate(-50%, -50%);
 
     display: flex;
+
     flex-direction: column;
 
     align-items: center;
@@ -327,6 +430,7 @@ body {
     height: clamp(36px, 7vh, 50px);
 
     border: none;
+
     border-radius: 12px;
 
     color: white;
@@ -353,7 +457,7 @@ body {
 
 
 /* =====================================================
-   INFORMACIÓN ROBOT
+   INFORMACIÓN DEL ROBOT
    ===================================================== */
 
 #robotInfo {
@@ -389,18 +493,20 @@ body {
 
 
 /* =====================================================
-   BARRAS
+   BARRAS DERECHA
    ===================================================== */
 
 #barrasDerecha {
     position: fixed;
 
     right: .8vw;
+
     top: 52%;
 
     transform: translateY(-50%);
 
     display: flex;
+
     flex-direction: column;
 
     align-items: center;
@@ -489,97 +595,6 @@ body {
 
 
 /* =====================================================
-   PANEL DE DIAGNÓSTICO
-   ===================================================== */
-
-#diagnostico {
-    position: fixed;
-
-    left: 1vw;
-    top: 10vh;
-
-    width: clamp(145px, 18vw, 220px);
-
-    padding: 10px;
-
-    background: rgba(15,23,42,.96);
-
-    border: 1px solid #334155;
-
-    border-radius: 12px;
-
-    box-shadow:
-        0 8px 25px rgba(0,0,0,.35);
-
-    z-index: 120;
-}
-
-#diagnosticoTitulo {
-    margin-bottom: 7px;
-
-    padding-bottom: 5px;
-
-    border-bottom: 1px solid #334155;
-
-    font-size: clamp(10px, 1.7vw, 14px);
-
-    font-weight: bold;
-
-    text-align: center;
-
-    color: #e2e8f0;
-}
-
-.diagnosticoLinea {
-    display: flex;
-
-    align-items: center;
-    justify-content: space-between;
-
-    min-height: 20px;
-
-    font-size: clamp(8px, 1.4vw, 11px);
-}
-
-.diagnosticoLinea span:first-child {
-    color: #94a3b8;
-}
-
-.diagnosticoLinea span:last-child {
-    color: white;
-    font-weight: bold;
-}
-
-#diagConexion {
-    color: #facc15 !important;
-}
-
-.bateriaBarra {
-    width: 55px;
-    height: 8px;
-
-    margin-left: 5px;
-
-    overflow: hidden;
-
-    background: #1e293b;
-
-    border: 1px solid #475569;
-
-    border-radius: 5px;
-}
-
-#bateriaRelleno {
-    width: 87%;
-    height: 100%;
-
-    background: #22c55e;
-
-    transition: width .3s;
-}
-
-
-/* =====================================================
    TURBO
    ===================================================== */
 
@@ -587,9 +602,11 @@ body {
     position: fixed;
 
     left: 1vw;
+
     bottom: 1vh;
 
     width: clamp(70px, 10vw, 105px);
+
     height: clamp(34px, 6vh, 45px);
 
     border: none;
@@ -684,6 +701,7 @@ input[type="range"] {
     position: fixed;
 
     right: 4vw;
+
     bottom: 1vh;
 
     width: min(18vw, 160px);
@@ -718,7 +736,28 @@ input[type="range"] {
 
     #estado {
         margin-right: 55px;
+
         font-size: 9px;
+    }
+
+    #diagnostico {
+        left: 5px;
+
+        top: 50px;
+
+        width: 135px;
+
+        padding: 7px;
+    }
+
+    #diagnosticoTitulo {
+        font-size: 10px;
+    }
+
+    .diagnosticoLinea {
+        font-size: 8px;
+
+        min-height: 17px;
     }
 
     .joystick {
@@ -749,17 +788,13 @@ input[type="range"] {
         right: .5vw;
     }
 
-    #diagnostico {
-        width: 135px;
-        padding: 7px;
-    }
-
     #config {
         width: 42vw;
     }
 
     #conectar {
         right: 3vw;
+
         width: 20vw;
     }
 
@@ -804,6 +839,7 @@ input[type="range"] {
     #robot {
         width: 60px;
         height: 60px;
+
         font-size: 30px;
     }
 
@@ -813,7 +849,9 @@ input[type="range"] {
 
     #diagnostico {
         top: 45px;
+
         width: 150px;
+
         padding: 5px;
     }
 
@@ -905,22 +943,15 @@ input[type="range"] {
         📊 DIAGNÓSTICO
     </div>
 
-
     <div class="diagnosticoLinea">
         <span>CONEXIÓN</span>
-        <span id="diagConexion">
-            SIMULACIÓN
-        </span>
+        <span id="diagConexion">SIMULACIÓN</span>
     </div>
-
 
     <div class="diagnosticoLinea">
         <span>HUB</span>
-        <span id="diagHub">
-            SPIKE PRIME
-        </span>
+        <span>SPIKE PRIME</span>
     </div>
-
 
     <div class="diagnosticoLinea">
 
@@ -933,61 +964,46 @@ input[type="range"] {
             </span>
 
             <span class="bateriaBarra">
-
                 <span id="bateriaRelleno"></span>
-
             </span>
 
         </span>
 
     </div>
 
-
     <div class="diagnosticoLinea">
         <span>MOTOR A</span>
         <span id="diagA">0%</span>
     </div>
-
 
     <div class="diagnosticoLinea">
         <span>MOTOR B</span>
         <span id="diagB">0°</span>
     </div>
 
-
     <div class="diagnosticoLinea">
         <span>MOTOR D</span>
         <span id="diagD">0%</span>
     </div>
-
 
     <div class="diagnosticoLinea">
         <span>VELOCIDAD</span>
         <span id="diagVelocidad">0%</span>
     </div>
 
-
     <div class="diagnosticoLinea">
         <span>DIRECCIÓN</span>
-        <span id="diagDireccion">
-            CENTRO
-        </span>
+        <span id="diagDireccion">CENTRO</span>
     </div>
-
 
     <div class="diagnosticoLinea">
         <span>DISTANCIA</span>
-        <span id="diagDistancia">
-            0.0 m
-        </span>
+        <span id="diagDistancia">0.0 m</span>
     </div>
-
 
     <div class="diagnosticoLinea">
         <span>FPS</span>
-        <span id="diagFPS">
-            60
-        </span>
+        <span id="diagFPS">60</span>
     </div>
 
 </div>
@@ -1026,7 +1042,7 @@ input[type="range"] {
 
 
 <!-- =====================================================
-     ROBOT VIRTUAL
+     ROBOT
      ===================================================== -->
 
 <div id="centro">
@@ -1112,7 +1128,6 @@ input[type="range"] {
      ===================================================== -->
 
 <div id="config">
-
 
     <div class="configLinea">
 
@@ -1364,13 +1379,19 @@ const turbo =
    ========================================================= */
 
 const diagA =
-    document.getElementById("diagA");
+    document.getElementById(
+        "diagA"
+    );
 
 const diagB =
-    document.getElementById("diagB");
+    document.getElementById(
+        "diagB"
+    );
 
 const diagD =
-    document.getElementById("diagD");
+    document.getElementById(
+        "diagD"
+    );
 
 const diagVelocidad =
     document.getElementById(
@@ -1469,7 +1490,6 @@ async function entrarFullscreen() {
             fullscreen.textContent =
                 "✕";
 
-
             if (
                 screen.orientation &&
                 screen.orientation.lock
@@ -1554,10 +1574,8 @@ function crearJoystick(elemento) {
             return;
         }
 
-
         const rect =
             elemento.getBoundingClientRect();
-
 
         const centroX =
             rect.width / 2;
@@ -1565,29 +1583,24 @@ function crearJoystick(elemento) {
         const centroY =
             rect.height / 2;
 
-
         let nuevaX =
             evento.clientX -
             rect.left -
             centroX;
-
 
         let nuevaY =
             evento.clientY -
             rect.top -
             centroY;
 
-
         const max =
             rect.width / 2 - 35;
-
 
         const distanciaJoystick =
             Math.sqrt(
                 nuevaX * nuevaX +
                 nuevaY * nuevaY
             );
-
 
         if (
             distanciaJoystick > max
@@ -1605,21 +1618,17 @@ function crearJoystick(elemento) {
 
         }
 
-
         x =
             nuevaX / max;
 
         y =
             nuevaY / max;
 
-
         palanca.style.left =
             `calc(50% + ${nuevaX}px)`;
 
-
         palanca.style.top =
             `calc(50% + ${nuevaY}px)`;
-
 
         actualizarControl();
 
@@ -1633,13 +1642,11 @@ function crearJoystick(elemento) {
         x = 0;
         y = 0;
 
-
         palanca.style.left =
             "50%";
 
         palanca.style.top =
             "50%";
-
 
         actualizarControl();
 
@@ -1704,6 +1711,23 @@ const direccion =
 
 
 /* =========================================================
+   CONTROL
+   ========================================================= */
+
+function actualizarControl() {
+
+    actualizarBarraMovimiento(
+        movimiento.obtenerY()
+    );
+
+    actualizarBarraDireccion(
+        direccion.obtenerX()
+    );
+
+}
+
+
+/* =========================================================
    BARRA MOVIMIENTO
    ========================================================= */
 
@@ -1715,10 +1739,8 @@ function actualizarBarraMovimiento(valor) {
             Math.abs(valor) * 100
         );
 
-
     valorMovimiento.textContent =
         Math.round(porcentaje) + "%";
-
 
     if (valor < 0) {
 
@@ -1765,10 +1787,8 @@ function actualizarBarraDireccion(valor) {
             Math.abs(valor) * 100
         );
 
-
     valorDireccion.textContent =
         Math.round(porcentaje) + "%";
-
 
     if (valor < 0) {
 
@@ -1816,8 +1836,6 @@ function actualizarSimulacion() {
         direccion.obtenerX();
 
 
-    /* WASD */
-
     if (teclas["w"]) {
         movimientoY = -1;
     }
@@ -1838,6 +1856,7 @@ function actualizarSimulacion() {
     if (frenado) {
 
         movimientoY = 0;
+
         direccionX = 0;
 
     }
@@ -1845,7 +1864,6 @@ function actualizarSimulacion() {
 
     velocidadActual =
         -movimientoY;
-
 
     direccionActual =
         direccionX;
@@ -1861,14 +1879,16 @@ function actualizarSimulacion() {
         (
             velocidadActual -
             direccionActual
-        ) * multiplicadorTurbo;
+        ) *
+        multiplicadorTurbo;
 
 
     let motorDerecho =
         (
             velocidadActual +
             direccionActual
-        ) * multiplicadorTurbo;
+        ) *
+        multiplicadorTurbo;
 
 
     motorIzquierdo =
@@ -1898,10 +1918,6 @@ function actualizarSimulacion() {
         );
 
 
-    /* =====================================================
-       MOSTRAR DATOS
-       ===================================================== */
-
     const porcentajeA =
         Math.round(
             motorIzquierdo * 100
@@ -1916,10 +1932,8 @@ function actualizarSimulacion() {
     motorA.textContent =
         porcentajeA + "%";
 
-
     motorD.textContent =
         porcentajeD + "%";
-
 
     motorB.textContent =
         Math.round(
@@ -1930,10 +1944,8 @@ function actualizarSimulacion() {
     diagA.textContent =
         porcentajeA + "%";
 
-
     diagD.textContent =
         porcentajeD + "%";
-
 
     diagB.textContent =
         Math.round(
@@ -1979,10 +1991,6 @@ function actualizarSimulacion() {
     }
 
 
-    /* =====================================================
-       DISTANCIA SIMULADA
-       ===================================================== */
-
     distancia +=
         Math.abs(
             velocidadActual
@@ -1995,10 +2003,6 @@ function actualizarSimulacion() {
         distancia.toFixed(1) +
         " m";
 
-
-    /* =====================================================
-       GIRAR ROBOT
-       ===================================================== */
 
     rotacion +=
         direccionActual *
@@ -2014,14 +2018,9 @@ function actualizarSimulacion() {
         `rotate(${-rotacion}deg)`;
 
 
-    /* =====================================================
-       BARRAS
-       ===================================================== */
-
     actualizarBarraMovimiento(
         movimientoY
     );
-
 
     actualizarBarraDireccion(
         direccionX
@@ -2031,11 +2030,8 @@ function actualizarSimulacion() {
 
 
 /* =========================================================
-   ANIMACIÓN
+   FPS
    ========================================================= */
-
-let ultimoFrame =
-    performance.now();
 
 let contadorFrames = 0;
 
@@ -2047,13 +2043,10 @@ function bucle() {
 
     actualizarSimulacion();
 
-
     contadorFrames++;
-
 
     const ahora =
         performance.now();
-
 
     if (
         ahora - tiempoFPS >= 1000
@@ -2067,10 +2060,6 @@ function bucle() {
         tiempoFPS = ahora;
 
     }
-
-
-    ultimoFrame = ahora;
-
 
     requestAnimationFrame(
         bucle
@@ -2095,7 +2084,6 @@ freno.addEventListener(
     }
 );
 
-
 freno.addEventListener(
     "pointerup",
     () => {
@@ -2104,7 +2092,6 @@ freno.addEventListener(
 
     }
 );
-
 
 freno.addEventListener(
     "pointercancel",
@@ -2129,13 +2116,11 @@ centrar.addEventListener(
                 ".palanca"
             );
 
-
         palanca.style.left =
             "50%";
 
         palanca.style.top =
             "50%";
-
 
         anguloActual = 0;
 
@@ -2149,54 +2134,46 @@ centrar.addEventListener(
    TURBO
    ========================================================= */
 
+function activarTurbo() {
+
+    turboActivo = true;
+
+    turbo.classList.add(
+        "activo"
+    );
+
+    turbo.textContent =
+        "🔥 TURBO";
+
+}
+
+function desactivarTurbo() {
+
+    turboActivo = false;
+
+    turbo.classList.remove(
+        "activo"
+    );
+
+    turbo.textContent =
+        "⚡ TURBO";
+
+}
+
+
 turbo.addEventListener(
     "pointerdown",
-    () => {
-
-        turboActivo = true;
-
-        turbo.classList.add(
-            "activo"
-        );
-
-        turbo.textContent =
-            "🔥 TURBO";
-
-    }
+    activarTurbo
 );
-
 
 turbo.addEventListener(
     "pointerup",
-    () => {
-
-        turboActivo = false;
-
-        turbo.classList.remove(
-            "activo"
-        );
-
-        turbo.textContent =
-            "⚡ TURBO";
-
-    }
+    desactivarTurbo
 );
-
 
 turbo.addEventListener(
     "pointercancel",
-    () => {
-
-        turboActivo = false;
-
-        turbo.classList.remove(
-            "activo"
-        );
-
-        turbo.textContent =
-            "⚡ TURBO";
-
-    }
+    desactivarTurbo
 );
 
 
@@ -2216,45 +2193,10 @@ document
             estado.style.color =
                 "#22c55e";
 
-
             document.getElementById(
                 "diagConexion"
             ).textContent =
                 "SIMULACIÓN";
-
-
-            /* Batería simulada */
-
-            let bateria = 87;
-
-
-            const intervalo =
-                setInterval(
-                    () => {
-
-                        if (
-                            bateria > 10
-                        ) {
-
-                            bateria -=
-                                0.01;
-
-                        }
-
-
-                        diagBateria.textContent =
-                            Math.round(
-                                bateria
-                            ) + "%";
-
-
-                        bateriaRelleno.style.width =
-                            bateria + "%";
-
-
-                    },
-                    1000
-                );
 
         }
     );
@@ -2298,11 +2240,7 @@ document.addEventListener(
             === "shift"
         ) {
 
-            turboActivo = true;
-
-            turbo.classList.add(
-                "activo"
-            );
+            activarTurbo();
 
         }
 
@@ -2334,11 +2272,7 @@ document.addEventListener(
             === "shift"
         ) {
 
-            turboActivo = false;
-
-            turbo.classList.remove(
-                "activo"
-            );
+            desactivarTurbo();
 
         }
 
